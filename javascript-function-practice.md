@@ -1,9 +1,11 @@
 ---
 title: javascript function practice
 date: 2020-09-18 16:43:03
-tags:
+category: "javascript"
+draft: false
 ---
-#  0918 function 과제
+
+# 0918 function 과제
 
 ## 문제 1. 1 ~ 10,000의 숫자 중 8이 등장하는 횟수 구하기 (Google)
 
@@ -17,8 +19,6 @@ function getCount8 () {
 }
 console.log(getCount8()); // 4000
 ```
-
-
 
 **Answer**
 
@@ -37,8 +37,6 @@ function getCount8 () {
 console.log(getCount8());//4000
 ```
 
-
-
 ## 문제 2. 이상한 문자 만들기
 
 toWeirdCase함수는 문자열을 인수로 전달받는다. 문자열 s에 각 단어의 짝수번째 인덱스 문자는 대문자로, 홀수번째 인덱스 문자는 소문자로 바꾼 문자열을 리턴하도록 함수를 완성하라.
@@ -49,8 +47,6 @@ toWeirdCase함수는 문자열을 인수로 전달받는다. 문자열 s에 각 
 function toWeirdCase(s) {}console.log(toWeirdCase('hello world'));    // 'HeLlO WoRlD'
 console.log(toWeirdCase('my name is lee')); // 'My NaMe Is LeE'
 ```
-
-
 
 **Answer**
 
@@ -96,6 +92,3 @@ function toWeirdCase(s){
 console.log(toWeirdCase('ahf@@sk!!dhf fD%%FDFas'));
 //AhF@@sK!!dHf Fd%%FdFaS
 ```
-
-
-

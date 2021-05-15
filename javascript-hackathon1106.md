@@ -1,11 +1,13 @@
 ---
 title: javascript hackathon1106
 date: 2020-11-11 08:50:00
-tags:
+category: "javascript"
+draft: false
 ---
+
 # 11/06 해커톤
 
-- 주제 
+- 주제
   - 이상형 월드컵
   - 조건에 따라 사진 필터링
 
@@ -15,7 +17,7 @@ tags:
 - git 사용법 확실히 공부하고 진행
 - 기획 더 신경써서 하기
 
-##  index.html
+## index.html
 
 ```
 <!DOCTYPE html>
@@ -79,8 +81,6 @@ tags:
 </html>
 ```
 
-
-
 ## app.js
 
 ```
@@ -108,7 +108,7 @@ let match8 = [];
 let match4 = [];
 let match2 = [];
 let match1 = [];
-let tournament =[]  
+let tournament =[]
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -121,7 +121,7 @@ const ranDom = n => {
       if(!numArr.includes(num)){
        numArr.push(num);
        break;
-      }   
+      }
     }
   }
 }
@@ -133,7 +133,7 @@ $gender.onclick = e => {
   }
   else if(e.target.matches('.gender > .man')){
     genderChoice = 'm'
-  } else return; 
+  } else return;
 }
 //gender 선택 끝
 // next 버튼을 누르면 gender에 active 삭제, job에 active 추가하는 이벤트 핸들러
@@ -163,8 +163,8 @@ $job.onclick = e => {
 }
 $start.onclick = () => {
    NewidealType = idealType.filter(ideal => {
-    return jobkey==='all' ? ideal.gender === genderChoice : 
-    ideal.gender === genderChoice && ideal.job === jobkey 
+    return jobkey==='all' ? ideal.gender === genderChoice :
+    ideal.gender === genderChoice && ideal.job === jobkey
   });
   if (jobkey === 'all' ) {
     ranDom(32);
@@ -176,7 +176,7 @@ $start.onclick = () => {
   $battle.classList.add('active');
   tournament = matchImage(NewidealType);
   renderImage(tournament,0);
- } 
+ }
  const randomItem = () => {
   NewidealType = NewidealType.map((item, i, arr) => arr[numArr[i]]);
   }
@@ -257,7 +257,7 @@ $battle.onclick = e => {
     tournament = matchImage(match2);
   }
   if(count===15){match1 = match2.filter((_,i) => match1Index.includes(i));
-    console.log(match1);  
+    console.log(match1);
     tournament = matchImage(match1);
     e.target.classList.add('champion');
   }
@@ -525,8 +525,6 @@ footer >span:nth-child(2) {
 }
 ```
 
-
-
 - data.js (lank 오타ㅎㅎ.. lank => rank)
 
 ```
@@ -597,6 +595,3 @@ const idealType = [
   { id: 64, job: 'actor', content: '정소민', path: '../여자배우/정소민.jpeg', gender: 'w', lank: 0 },
 ]
 ```
-
-
-

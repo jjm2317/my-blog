@@ -1,8 +1,10 @@
 ---
 title: javascript newTodoList
 date: 2020-11-02 16:18:48
-tags:
+category: "javascript"
+draft: false
 ---
+
 # TodoList 과제
 
 ```
@@ -31,7 +33,7 @@ const render = () => {
       <input id="ck-${id}" class="checkbox" type="checkbox" ${completed ? "checked" : ''}>
       <label for="ck-${id}">${content}</label>
       <i class="remove-todo far fa-times-circle"></i>
-    </li>`  
+    </li>`
   }).join('');
   $todoCompleted.textContent = todos.filter(todo => todo.completed === true).length;
   $todoActive.textContent = todos.filter(todo => todo.completed === false).length;
@@ -50,7 +52,7 @@ const findId = () => {
 const addTodo = (content) => {
   const newTodo = {id: findId(), content, completed: false}
   todos = [newTodo, ...todos];
-  
+
   data = [newTodo,...data];
   updateData()
   console.log(todos,data);
@@ -152,7 +154,7 @@ $clear.onclick = e => {
   todos = todos.map(todo => {
     return {...todo, ...{completed : false}};
   })
-  
+
   render();
   updateData();
 }
@@ -179,8 +181,3 @@ $completeAll.onchange = e => {
   render();
 }
 ```
-
-
-
-
-

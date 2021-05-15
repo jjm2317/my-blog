@@ -1,8 +1,10 @@
 ---
 title: javascript Number
 date: 2020-10-22 15:43:43
-tags:
+category: "javascript"
+draft: false
 ---
+
 # Number
 
 ## 1. Number 생성자 함수
@@ -24,8 +26,6 @@ numObj = new Number('Hello');
 console.log(numObj); // Number {[[PrimitiveValue]]: NaN}
 ```
 
-
-
 ## 2. Number 프로퍼티
 
 ### 2.1 Number.EPSILON
@@ -43,16 +43,12 @@ function isEqual(a,b){
 isEqual(0.1 + 0.2, 0.3); //true
 ```
 
-
-
 ### 2.2 Number.MAX_VALUE
 
 ```
 Number.MAX_VALUE; // 1.7976931348623157e+308
 Infinity > Number.MAX_VALUE
 ```
-
-
 
 ### 2.3 Number.MIN_VALUE
 
@@ -61,15 +57,11 @@ Number.MIN_VALUE; // 5e-324
 NUMBER.MIN_VALUE > 0;//true
 ```
 
-
-
 ### 2.4 NUMBER.MAX_SAFE_INTEGER
 
 ```
 Number.MAX_SAFE_INTEGER; // 9007199254740991
 ```
-
-
 
 ### 2.5 Number.MIN_SAFE_INTEGER
 
@@ -77,15 +69,11 @@ Number.MAX_SAFE_INTEGER; // 9007199254740991
 Number.MIN_SAFE_INTEGER; //-9007199254740991
 ```
 
-
-
 ### 2.6 Number.POSITIVE_INFINITY
 
 ```
 Number.POSITIVE_INFINITY; //Infinity
 ```
-
-
 
 ### 2.7 Number.NEGATIVE_INFINITY
 
@@ -93,15 +81,11 @@ Number.POSITIVE_INFINITY; //Infinity
 Number.NEGATIVE_INFINITY; // -Infinity
 ```
 
-
-
 ### 2.8 Number.NaN
 
 ```
 Number.NaN; // NaN
 ```
-
-
 
 ## 3. Number 메서드
 
@@ -126,8 +110,6 @@ Number.isFinite(null) ;// false
 isFinite(null); //true
 ```
 
-
-
 ### 3.2 Number.isInteger
 
 ```
@@ -142,8 +124,6 @@ Number.isInteger(Infinity); //false
 Number.isInteger(-Infinity); //false
 ```
 
-
-
 ### 3.3 Number.isNaN
 
 ```
@@ -154,4 +134,3 @@ Number.isNaN(NaN); //true
 Number.isNaN(undefined); //false
 isNaN(undefined); //false
 ```
-

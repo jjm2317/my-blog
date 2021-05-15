@@ -1,7 +1,8 @@
 ---
 title: javascript ArrayPractice
 date: 2020-10-21 18:35:43
-tags:
+category: "javascript"
+draft: false
 ---
 
 # 1. html 생성
@@ -10,19 +11,21 @@ tags:
 
 ```javascript
 const todos = [
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 1, content: 'Javascript', completed: false }
+  { id: 3, content: "HTML", completed: false },
+  { id: 2, content: "CSS", completed: true },
+  { id: 1, content: "Javascript", completed: false },
 ];
 
 function render() {
-  let html = '';
+  let html = "";
 
-  todos.forEach(todo => {
-	html += `<li id = ${todo.id}>
-	<label><input type ="checkbox" ${todo.completed === true ? 'checked' : ''}>${todo.content}</label>
+  todos.forEach((todo) => {
+    html += `<li id = ${todo.id}>
+	<label><input type ="checkbox" ${todo.completed === true ? "checked" : ""}>${
+      todo.content
+    }</label>
 </li>
-`
+`;
   });
 
   return html;
@@ -42,12 +45,6 @@ console.log(render());
 */
 ```
 
-
-
-
-
-
-
 # 2. 특정 프로퍼티 값 추출
 
 요소의 프로퍼티(id, content, completed)를 문자열 인수로 전달하면 todos의 각 요소 중, 해당 프로퍼티의 값만을 추출한 배열을 반환하는 함수를 작성하라.
@@ -56,21 +53,19 @@ console.log(render());
 
 ```javascript
 const todos = [
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 1, content: 'Javascript', completed: false }
+  { id: 3, content: "HTML", completed: false },
+  { id: 2, content: "CSS", completed: true },
+  { id: 1, content: "Javascript", completed: false },
 ];
 
 function getValues(key) {
-	return todos.map(todo => todo[key]);
+  return todos.map((todo) => todo[key]);
 }
 
-console.log(getValues('id')); // [3, 2, 1]
-console.log(getValues('content')); // ['HTML', 'CSS', 'Javascript']
-console.log(getValues('completed')); // [false, true, false]
+console.log(getValues("id")); // [3, 2, 1]
+console.log(getValues("content")); // ['HTML', 'CSS', 'Javascript']
+console.log(getValues("completed")); // [false, true, false]
 ```
-
-
 
 # 3. 프로퍼티 정렬
 
@@ -82,18 +77,18 @@ console.log(getValues('completed')); // [false, true, false]
 
 ```javascript
 const todos = [
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 1, content: 'Javascript', completed: false }
+  { id: 3, content: "HTML", completed: false },
+  { id: 2, content: "CSS", completed: true },
+  { id: 1, content: "Javascript", completed: false },
 ];
 
 function sortBy(key) {
-	return [...todos].sort((v1, v2) => {
-        return v1[key] > v2[key] ? 1 : (v1[key] < v2[key] ? -1 : 0);
-    })
+  return [...todos].sort((v1, v2) => {
+    return v1[key] > v2[key] ? 1 : v1[key] < v2[key] ? -1 : 0;
+  });
 }
 
-console.log(sortBy('id'));
+console.log(sortBy("id"));
 /*
 [
   { id: 1, content: 'Javascript', completed: false },
@@ -101,7 +96,7 @@ console.log(sortBy('id'));
   { id: 3, content: 'HTML', completed: false }
 ]
 */
-console.log(sortBy('content'));
+console.log(sortBy("content"));
 /*
 [
   { id: 2, content: 'CSS', completed: true },
@@ -109,7 +104,7 @@ console.log(sortBy('content'));
   { id: 1, content: 'Javascript', completed: false }
 ]
 */
-console.log(sortBy('completed'));
+console.log(sortBy("completed"));
 /*
 [
   { id: 3, content: 'HTML', completed: false },
@@ -119,28 +114,22 @@ console.log(sortBy('completed'));
 */
 ```
 
-
-
-
-
-
-
 # 4. 새로운 요소 추가
 
 새로운 요소(예를 들어 `{ id: 4, content: 'Test', completed: false }`)를 인수로 전달하면 todos의 선두에 새로운 요소를 추가하는 함수를 작성하라. 단, Array#push는 사용하지 않도록 하자.
 
 ```javascript
 let todos = [
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 1, content: 'Javascript', completed: false }
+  { id: 3, content: "HTML", completed: false },
+  { id: 2, content: "CSS", completed: true },
+  { id: 1, content: "Javascript", completed: false },
 ];
 
 function addTodo(newTodo) {
-	todos = [newTodo,...todos];
+  todos = [newTodo, ...todos];
 }
 
-addTodo({ id: 4, content: 'Test', completed: false });
+addTodo({ id: 4, content: "Test", completed: false });
 
 console.log(todos);
 /*
@@ -153,21 +142,19 @@ console.log(todos);
 */
 ```
 
-
-
 # 5. 특정 요소 삭제
 
 todos에서 삭제할 요소의 id를 인수로 전달하면 해당 요소를 삭제하는 함수를 작성하라.
 
 ```javascript
 let todos = [
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 1, content: 'Javascript', completed: false }
+  { id: 3, content: "HTML", completed: false },
+  { id: 2, content: "CSS", completed: true },
+  { id: 1, content: "Javascript", completed: false },
 ];
 
 function removeTodo(id) {
-	todos = todos.filter(todo => todo.id !== id);
+  todos = todos.filter((todo) => todo.id !== id);
 }
 
 removeTodo(2);
@@ -181,8 +168,6 @@ console.log(todos);
 */
 ```
 
-
-
 # 6. 특정 요소의 프로퍼티 값 반전
 
 todos에서 대상 요소의 id를 인수로 전달하면 해당 요소의 completed 프로퍼티 값을 반전하는 함수를 작성하라.
@@ -191,15 +176,18 @@ hint) 기존 객체의 특정 프로퍼티를 변경/추가하여 새로운 객�
 
 ```javascript
 let todos = [
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 1, content: 'Javascript', completed: false }
+  { id: 3, content: "HTML", completed: false },
+  { id: 2, content: "CSS", completed: true },
+  { id: 1, content: "Javascript", completed: false },
 ];
 
 function toggleCompletedById(id) {
-	todos = todos.map(todo => todo.id === id ? {...todo, ...{completed: !todo.completed}} : {...todo});
+  todos = todos.map((todo) =>
+    todo.id === id
+      ? { ...todo, ...{ completed: !todo.completed } }
+      : { ...todo }
+  );
 }
-
 
 toggleCompletedById(2);
 
@@ -221,18 +209,17 @@ hint) 기존 객체의 특정 프로퍼티를 변경/추가하여 새로운 객�
 
 ```javascript
 let todos = [
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 1, content: 'Javascript', completed: false }
+  { id: 3, content: "HTML", completed: false },
+  { id: 2, content: "CSS", completed: true },
+  { id: 1, content: "Javascript", completed: false },
 ];
 
 function toggleCompletedAll() {
-   todos = todos.map((todo) => {
-       todo = {...todo,...{completed : true}};
-       return todo;
-   });
- }
-
+  todos = todos.map((todo) => {
+    todo = { ...todo, ...{ completed: true } };
+    return todo;
+  });
+}
 
 toggleCompletedAll();
 
@@ -254,13 +241,13 @@ todos에서 완료(completed: true)한 할일의 갯수를 구하는 함수를 �
 
 ```javascript
 let todos = [
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 1, content: 'Javascript', completed: false }
+  { id: 3, content: "HTML", completed: false },
+  { id: 2, content: "CSS", completed: true },
+  { id: 1, content: "Javascript", completed: false },
 ];
 
 function countCompletedTodos() {
-	return todos.filter(todo => todo.completed === true).length;
+  return todos.filter((todo) => todo.completed === true).length;
 }
 
 console.log(countCompletedTodos()); // 1
@@ -274,13 +261,13 @@ todos의 id 프로퍼티의 값 중에서 최대값을 구하는 함수를 작�
 
 ```javascript
 let todos = [
-  { id: 3, content: 'HTML', completed: false },
-  { id: 2, content: 'CSS', completed: true },
-  { id: 1, content: 'Javascript', completed: false }
+  { id: 3, content: "HTML", completed: false },
+  { id: 2, content: "CSS", completed: true },
+  { id: 1, content: "Javascript", completed: false },
 ];
 
 function getMaxId() {
-	return todos.length ? Math.max(...todos.map(todo => todo.id)) : 0;
+  return todos.length ? Math.max(...todos.map((todo) => todo.id)) : 0;
 }
 
 console.log(getMaxId()); // 3

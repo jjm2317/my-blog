@@ -1,8 +1,10 @@
 ---
 title: javascript AlgoPractice
 date: 2020-10-23 11:23:16
-tags:
+category: "javascript"
+draft: false
 ---
+
 # 알고리즘 연습
 
 ## 1. 짝수와 홀수
@@ -14,11 +16,11 @@ evenOrOdd 함수는 정수 num을 매개변수로 받는다. num은 1이상의 �
 ```javascript
 // if문
 function evenOrOdd(num) {
-	if(num % 2){
-        return 'Odd';
-    }else{
-        return 'Even';
-    }
+  if (num % 2) {
+    return "Odd";
+  } else {
+    return "Even";
+  }
 }
 
 console.log(evenOrOdd(2)); // Even
@@ -27,7 +29,7 @@ console.log(evenOrOdd(1000)); // Even
 
 // 3항 연산자
 function evenOrOdd(num) {
-	return num % 2 ? 'Odd' : 'Even';
+  return num % 2 ? "Odd" : "Even";
 }
 
 console.log(evenOrOdd(2)); // Even
@@ -44,15 +46,15 @@ console.log(evenOrOdd(1000)); // Even
 (hint) 문자열 중 n번째에 있는 문자 : str.charAt(n) or str[n]
 
 ```javascript
-function getCount8 () {
-    let str = '';
-   
-	for(let i = 1; i <= 10000; i++){
-        str += i;
-    }
-    return [...str].reduce((pre, cur, i, arr) => {
-        return cur === '8' ? ++pre : pre; 
-    }, 0)
+function getCount8() {
+  let str = "";
+
+  for (let i = 1; i <= 10000; i++) {
+    str += i;
+  }
+  return [...str].reduce((pre, cur, i, arr) => {
+    return cur === "8" ? ++pre : pre;
+  }, 0);
 }
 
 console.log(getCount8()); // 4000
@@ -66,24 +68,23 @@ alphaString46 함수는 문자열 s를 매개변수로 입력받는다. s의 길
 
 ```javascript
 function alphaString46(s) {
-  if(!(typeof(s) === 'string')) return false;
-	if(!(s.length>=4 && s.length<=6)) {
-        return false;
-    }
-    let res = true;
-    [...s].forEach(item => {
-        if(Number.isNaN(+item)) res = false
-    });
-    return res;
+  if (!(typeof s === "string")) return false;
+  if (!(s.length >= 4 && s.length <= 6)) {
+    return false;
+  }
+  let res = true;
+  [...s].forEach((item) => {
+    if (Number.isNaN(+item)) res = false;
+  });
+  return res;
 }
 
-
-console.log(alphaString46('1234')); // true
-console.log(alphaString46('9014')); // true
-console.log(alphaString46('723'));  // false
-console.log(alphaString46('a234')); // false
-console.log(alphaString46(''));     // false
-console.log(alphaString46());       // false
+console.log(alphaString46("1234")); // true
+console.log(alphaString46("9014")); // true
+console.log(alphaString46("723")); // false
+console.log(alphaString46("a234")); // false
+console.log(alphaString46("")); // false
+console.log(alphaString46()); // false
 ```
 
 ## 4. 문자열 내 p와 y의 개수
@@ -94,18 +95,17 @@ numPY함수는 대문자와 소문자가 섞여있는 문자열 s를 인수로 �
 
 ```javascript
 function numPY(s) {
-  	if(arguments.length === 0) return true;
-	let numP = [...s].filter(item => item === 'p' || item === 'P').length;
-  	let numS = [...s].filter(item => item === 'y' || item === 'Y').length;
-  	return numP === numS ? true : false;
-  
+  if (arguments.length === 0) return true;
+  let numP = [...s].filter((item) => item === "p" || item === "P").length;
+  let numS = [...s].filter((item) => item === "y" || item === "Y").length;
+  return numP === numS ? true : false;
 }
 
-console.log(numPY('pPoooyY')); // true
-console.log(numPY('Pyy'));     // false
-console.log(numPY('ab'));      // true
-console.log(numPY(''));        // true
-console.log(numPY());          // true
+console.log(numPY("pPoooyY")); // true
+console.log(numPY("Pyy")); // false
+console.log(numPY("ab")); // true
+console.log(numPY("")); // true
+console.log(numPY()); // true
 ```
 
 ## 5. 이상한 문자 만들기
@@ -118,22 +118,22 @@ toWeirdCase함수는 문자열을 인수로 전달받는다. 문자열 s에 각 
 
 ```javascript
 function toWeirdCase(s) {
-	let count = 0;
-    let newStr = '';
-    for(let i = 0; i < s.length; i++){
-        if(s[i] === ' '){
-            newStr += ' ';
-            count = 0;
-            continue;
-        }
-        newStr += count % 2 === 0 ? s[i].toUpperCase() : s[i].toLowerCase();
-        ++count;
+  let count = 0;
+  let newStr = "";
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === " ") {
+      newStr += " ";
+      count = 0;
+      continue;
     }
-    return newStr;
+    newStr += count % 2 === 0 ? s[i].toUpperCase() : s[i].toLowerCase();
+    ++count;
+  }
+  return newStr;
 }
 
-console.log(toWeirdCase('hello world'));    // 'HeLlO WoRlD'
-console.log(toWeirdCase('my name is lee')); // 'My NaMe Is LeE'
+console.log(toWeirdCase("hello world")); // 'HeLlO WoRlD'
+console.log(toWeirdCase("my name is lee")); // 'My NaMe Is LeE'
 ```
 
 ## 6. 핸드폰번호 가리기
@@ -142,19 +142,19 @@ console.log(toWeirdCase('my name is lee')); // 'My NaMe Is LeE'
 
 ```javascript
 function hideNumbers(str) {
-	let res = '';
-    const n = str.length - 1;
-    for( let i = n; i>=n - 3; i--) {
-        res = str[i] + res;
-    }
-    for( let i = n - 4; i>=0; i--) {
-        res = '*' + res;
-    }
-    return res;
+  let res = "";
+  const n = str.length - 1;
+  for (let i = n; i >= n - 3; i--) {
+    res = str[i] + res;
+  }
+  for (let i = n - 4; i >= 0; i--) {
+    res = "*" + res;
+  }
+  return res;
 }
 
-console.log(hideNumbers('01033334444')); // *******4444
-console.log(hideNumbers('027778888'));   // *****8888
+console.log(hideNumbers("01033334444")); // *******4444
+console.log(hideNumbers("027778888")); // *****8888
 ```
 
 ## 7. 문자열을 숫자로 바꾸기
@@ -165,11 +165,11 @@ strToInt 메서드는 문자열을 인수로 전달받는다. 전달받은 문�
 
 ```javascript
 function strToInt(str) {
-	return Number(str);
+  return Number(str);
 }
 
-console.log(strToInt('1234'));  // 1234
-console.log(strToInt('-1234')); // -1234
+console.log(strToInt("1234")); // 1234
+console.log(strToInt("-1234")); // -1234
 ```
 
 ## 8. 수박수박수박수박수박수?
@@ -180,13 +180,13 @@ waterMelon 함수는 정수를 인수로 전달받는다. 길이가 n이고, 수
 
 ```javascript
 function waterMelon(n) {
-	return Array.from({length : n},(_,i) => i % 2 ? '박' : '수').join('').toString();
-    
-    
+  return Array.from({ length: n }, (_, i) => (i % 2 ? "박" : "수"))
+    .join("")
+    .toString();
 }
 
-console.log('n이 3인 경우: '+ waterMelon(3));
-console.log('n이 4인 경우: '+ waterMelon(4));
+console.log("n이 3인 경우: " + waterMelon(3));
+console.log("n이 4인 경우: " + waterMelon(4));
 ```
 
 ## 9. 정수제곱근 판별하기
@@ -196,19 +196,19 @@ nextSqaure함수는 정수를 인수로 전달받는다. n이 임의의 정수 x
 예를 들어 n이 121이라면 이는 정수 11의 제곱이므로 (11+1)의 제곱인 144를 리턴하고, 3이라면 ‘no’을 리턴한다.
 
 ```javascript
-function nextSqaure(n){
-	if(n<0 || arguments.length === 0) {
-        return 'no';
-    }
-    const num = Math.sqrt(n);
-    return Number.isInteger(num) ? (num+1) **2 : 'no';
+function nextSqaure(n) {
+  if (n < 0 || arguments.length === 0) {
+    return "no";
+  }
+  const num = Math.sqrt(n);
+  return Number.isInteger(num) ? (num + 1) ** 2 : "no";
 }
 
-console.log(nextSqaure());    // no
-console.log(nextSqaure(0));   // 1
-console.log(nextSqaure(1));   // 4
-console.log(nextSqaure(2));   // no
-console.log(nextSqaure(3));   // no
+console.log(nextSqaure()); // no
+console.log(nextSqaure(0)); // 1
+console.log(nextSqaure(1)); // 4
+console.log(nextSqaure(2)); // no
+console.log(nextSqaure(3)); // no
 console.log(nextSqaure(121)); // 144
 console.log(nextSqaure(165)); // no
 console.log(nextSqaure(400)); // 441
@@ -220,16 +220,16 @@ console.log(nextSqaure(400)); // 441
 
 ```javascript
 function getMaxValueFromArray(array) {
-	return array.reduce((pre,cur,i,arr) => {
-        return pre <= cur ? cur : pre;
-    })
+  return array.reduce((pre, cur, i, arr) => {
+    return pre <= cur ? cur : pre;
+  });
 }
 console.log(getMaxValueFromArray([3, 6, -2, -5, 7, 3])); // 7
 
 function getMinValueFromArray(array) {
-	return array.reduce((pre,cur, i, arr) => {
-        return pre > cur ? cur : pre;
-    })
+  return array.reduce((pre, cur, i, arr) => {
+    return pre > cur ? cur : pre;
+  });
 }
 console.log(getMinValueFromArray([3, 6, -2, -5, 7, 3])); // -5
 ```
@@ -242,23 +242,23 @@ palindrome(팰린드롬/회문)은 왼쪽에서 오른쪽으로 읽은 다음, �
 function checkPalindrom(str) {
   let count = 0;
   count = Math.round(str.length) - 1;
-  let left = '';
-  let right = '';
-  for( let i = 0; i < count; i++) {
+  let left = "";
+  let right = "";
+  for (let i = 0; i < count; i++) {
     left += str[i];
   }
-  
-  for(let i = 0; i < count; i++) {
+
+  for (let i = 0; i < count; i++) {
     right += str[str.length - i - 1];
   }
 
-  return left === right ? true : false
+  return left === right ? true : false;
 }
 
-console.log(checkPalindrom('dad')); // true
-console.log(checkPalindrom('mom')); // true
-console.log(checkPalindrom('palindrom')); // false
-console.log(checkPalindrom('s')); // true
+console.log(checkPalindrom("dad")); // true
+console.log(checkPalindrom("mom")); // true
+console.log(checkPalindrom("palindrom")); // false
+console.log(checkPalindrom("s")); // true
 ```
 
 ## 12. 중복 요소 제거
@@ -269,12 +269,12 @@ for 문은 사용하지 않도록 하자.
 
 ```javascript
 function uniq(array) {
-  return array.reduce((pre, cur,i, arr) => {
-    if(arr.indexOf(cur) === i) {
+  return array.reduce((pre, cur, i, arr) => {
+    if (arr.indexOf(cur) === i) {
       pre.push(cur);
     }
     return pre;
-  },[]);
+  }, []);
 }
 
 console.log(uniq([2, 1, 2, 3, 4, 3, 4])); // [ 2, 1, 3, 4 ]
@@ -290,13 +290,13 @@ console.log(uniq([2, 1, 2, 3, 4, 3, 4])); // [ 2, 1, 3, 4 ]
 function isNotOverlapArray(array) {
   let res = true;
   array.forEach((item, i, arr) => {
-    if(arr.indexOf(i+1) === -1) res = false; 
+    if (arr.indexOf(i + 1) === -1) res = false;
   });
   return res;
 }
 
 console.log(isNotOverlapArray([4, 1, 3, 2])); // true
-console.log(isNotOverlapArray([4, 1, 3]));    // false
+console.log(isNotOverlapArray([4, 1, 3])); // false
 ```
 
 ## 14. 중복된 요소
@@ -308,9 +308,9 @@ for 문은 사용하지 않도록 하자.
 ```javascript
 function findDuplicated(array) {
   return array.reduce((pre, cur, i, arr) => {
-    if(arr.indexOf(cur) !== i) pre.push(cur);
-    return pre;  
-  },[]);
+    if (arr.indexOf(cur) !== i) pre.push(cur);
+    return pre;
+  }, []);
 
   return pre.sort();
 }
@@ -327,8 +327,8 @@ console.log(findDuplicated([1, 2, 3, 4, 1, 2, 3])); // [ 1, 2, 3 ]
 ```javascript
 function sumDivisor(num) {
   let sum = 0;
-  for(let i = 1; i <= num ; i ++){
-    if(num % i === 0) {
+  for (let i = 1; i <= num; i++) {
+    if (num % i === 0) {
       sum += i;
     }
   }
@@ -347,12 +347,12 @@ numberOfPrime 메서드는 정수 n을 매개변수로 입력받는다. 1부터 
 ```javascript
 function numberOfPrime(n) {
   let res = 0;
-  for(let i = 1; i <= n ; i ++) {
+  for (let i = 1; i <= n; i++) {
     let count = 0;
-    for(let k = 1; k <= i; k++) {
-      if(i % k === 0) ++count;
-    } 
-    if(count === 2) ++res;
+    for (let k = 1; k <= i; k++) {
+      if (i % k === 0) ++count;
+    }
+    if (count === 2) ++res;
     count = 0;
   }
   return res;
@@ -372,7 +372,7 @@ function fibonacci(n) {
   let pre = 0;
   let med = 0;
   let cur = 1;
-  for ( let i = 0; i < n - 1; i++){
+  for (let i = 0; i < n - 1; i++) {
     med = cur;
     cur = cur + pre;
     pre = med;
@@ -393,18 +393,18 @@ console.log(fibonacci(6)); // 8
 
 ```javascript
 function digitSum(n) {
-  if(n>100000000) return false;
+  if (n > 100000000) return false;
   let str = n.toString();
   let res = 0;
-  for(let i = 0; i < str.length; i++){
+  for (let i = 0; i < str.length; i++) {
     res += +str[i];
   }
   return res;
 }
 
-console.log(digitSum(123));  // 6
-console.log(digitSum(987));  // 24
-console.log(digitSum(100000001));  // false
+console.log(digitSum(123)); // 6
+console.log(digitSum(987)); // 24
+console.log(digitSum(100000001)); // false
 ```
 
 ## 19. 하샤드 수
@@ -420,17 +420,16 @@ Harshad함수는 양의 정수 n을 매개변수로 입력받는다. 이 n이 �
 예를 들어 n이 10, 12, 18이면 True를 리턴 11, 13이면 False를 리턴한다.
 
 ```javascript
-function isHarshad(n){
+function isHarshad(n) {
   let str = n.toString();
   let sum = 0;
   let res;
-  for( let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     sum += +str[i];
   }
-  res = n % sum ===0 ? true : false;
+  res = n % sum === 0 ? true : false;
   return res;
 }
-
 
 console.log(isHarshad(10)); // true
 console.log(isHarshad(12)); // true
@@ -446,15 +445,15 @@ console.log(isHarshad(13)); // false
 ```javascript
 function generateRange(from, to) {
   const res = [];
-  let order = to - from >=0 ? 'up' : 'down';
-  let num = Math.abs(from - to ) + 1;
-  if(order === 'up') {
-    for(let i = from; i < from + num ; i++) {
+  let order = to - from >= 0 ? "up" : "down";
+  let num = Math.abs(from - to) + 1;
+  if (order === "up") {
+    for (let i = from; i < from + num; i++) {
       res.push(i);
     }
   }
-  if(order === 'down') {
-    for(let i = from; i > from - num ; i--) {
+  if (order === "down") {
+    for (let i = from; i > from - num; i--) {
       res.push(i);
     }
   }
@@ -473,19 +472,19 @@ x와 y가 같은 경우는 둘 중 아무 수나 리턴한다. x, y는 음수나
 예를 들어 x가 3, y가 5이면 12를 리턴한다.
 
 ```javascript
-function adder(x, y){
+function adder(x, y) {
   let arr = [];
   let mid = [];
   arr.push(x);
   arr.push(y);
   arr.sort();
   const first = arr[0];
-  const last = arr[arr.length -1];
-  for(let i = 0; i < last - first - 1; i++){
-    mid.push(first + i +1);
+  const last = arr[arr.length - 1];
+  for (let i = 0; i < last - first - 1; i++) {
+    mid.push(first + i + 1);
   }
   arr = [first, ...mid, last];
-  return arr.reduce((pre,cur) => pre+cur,0)
+  return arr.reduce((pre, cur) => pre + cur, 0);
 }
 
 console.log(adder(3, 5)); // 12
@@ -497,9 +496,9 @@ console.log(adder(3, 5)); // 12
 
 ```javascript
 function adjacentElementsProduct(arr) {
-  const newArr =[]
-  for(let i =0; i<arr.length - 1; i++){
-    newArr.push(arr[i] * arr[i+1]);
+  const newArr = [];
+  for (let i = 0; i < arr.length - 1; i++) {
+    newArr.push(arr[i] * arr[i + 1]);
   }
 
   return Math.max(...newArr);
@@ -514,7 +513,7 @@ console.log(adjacentElementsProduct([3, 6, -2, -5, 7, 3])); // 21
 
 ```javascript
 function getArray(arr) {
-  const newArr = arr.filter(item => item % 2 === 0 && item > 3);
+  const newArr = arr.filter((item) => item % 2 === 0 && item > 3);
 
   return newArr;
 }
@@ -527,9 +526,9 @@ console.log(getArray([1, 2, 3, 4, 5, 6])); // [ 4, 6 ]
 인수로 주어진 배열의 평균을 구하는 함수를 완성하라.
 
 ```javascript
-function average(array){
+function average(array) {
   const n = array.length;
-  return array.reduce((pre,cur,i,arr) => pre + cur, 0) / n;
+  return array.reduce((pre, cur, i, arr) => pre + cur, 0) / n;
 }
 
 console.log(average([5, 3, 4])); // 4
@@ -540,20 +539,20 @@ console.log(average([5, 3, 4])); // 4
 1차원의 점들이 주어졌을 때, 그 중 가장 거리가 짧은 것(들)의 쌍을 배열로 반환하는 함수를 작성하라. (단 점들의 배열은 모두 정렬되어있다고 가정한다.) 예를들어 [1, 3, 4, 8, 13, 17, 20, 23, 24]이 주어졌다면, 결과값은 [[3, 4], [23, 24]]가 될 것이다.
 
 ```javascript
-function findMinDistance(array){
+function findMinDistance(array) {
   const n = array.length;
   const res = [];
   let newArr = [];
-  for (let i = 0; i < n - 1 ; i ++) {
-    newArr.push(array[i+1] - array[i]);
+  for (let i = 0; i < n - 1; i++) {
+    newArr.push(array[i + 1] - array[i]);
   }
   let min = Math.min(...newArr);
   const resIndex = [];
   newArr.forEach((item, i, arr) => {
-    if(min === item) resIndex.push(arr.indexOf(item,i));
-  })
-  resIndex.forEach(item => res.push([array[item],array[item + 1]]))
-  return res
+    if (min === item) resIndex.push(arr.indexOf(item, i));
+  });
+  resIndex.forEach((item) => res.push([array[item], array[item + 1]]));
+  return res;
 }
 
 // 1차원 점의 배열
@@ -569,15 +568,14 @@ n개의 정수를 가진 배열이 있다. 이 배열은 양의 정수와 음의
 
 ```javascript
 function specialSort(array) {
-  const pos = array.filter(item => item >=0);
-  const neg = array.filter(item => item < 0);
+  const pos = array.filter((item) => item >= 0);
+  const neg = array.filter((item) => item < 0);
 
   pos.sort();
   neg.sort((a, b) => b - a);
 
   return [...neg, ...pos];
 }
-
 
 const testArray = [-1, 1, 3, -2, 2, 0];
 
@@ -592,14 +590,13 @@ console.log(specialSort(testArray)); // [ -1, -2, 0, 1, 2, 3 ]
 요일의 이름은 일요일부터 토요일까지 각각 SUN, MON, TUE, WED, THU, FRI, SAT를 출력한다. 예를 들어 a=5, b=24가 입력된다면 5월 24일은 화요일이므로 TUE를 반환한다.
 
 ```javascript
-function getDayName(a, b){
+function getDayName(a, b) {
   let resDay = new Date();
 
   resDay.setFullYear(2016, a - 1, b);
-  const day = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  const day = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   return day[resDay.getDay()];
 }
-
 
 console.log(getDayName(5, 24)); // TUE
 ```
@@ -614,12 +611,11 @@ function getCurrentWeek() {
   const res = [];
   const n = today.getDay();
   const time = today.getTime() - n * 86400000;
-  for(let i = 0; i < 7; i++) {
-    res.push(new Date(time + i * 86400000 ).toISOString().slice(0, 10));
+  for (let i = 0; i < 7; i++) {
+    res.push(new Date(time + i * 86400000).toISOString().slice(0, 10));
   }
   return res;
 }
-
 
 console.log(getCurrentWeek());
 /*
@@ -635,4 +631,3 @@ console.log(getCurrentWeek());
 ]
 */
 ```
-

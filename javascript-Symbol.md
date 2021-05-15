@@ -1,7 +1,8 @@
 ---
 title: javascript Symbol
 date: 2021-04-24 12:34:42
-tags:
+category: "javascript"
+draft: false
 ---
 
 # Symbol

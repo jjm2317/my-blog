@@ -1,8 +1,10 @@
 ---
 title: javascript restAPI&TodoList
 date: 2020-11-10 23:50:38
-tags:
+category: "javascript"
+draft: false
 ---
+
 # REST API 로 TodoList 구현
 
 ## todos.js (saved in ./data)
@@ -17,8 +19,6 @@ const todos = [
 exports.todos = todos;
 
 ```
-
-
 
 ## index.html
 
@@ -300,10 +300,10 @@ const render = () => {
 // 탭에 따른 렌더링 변화를 주기 위해 복사본에 조건에 맞는 값 할당 후 해당 복사본 렌더링
   let _todos = [];
   const $active = document.querySelector('.active');
-  $active.matches('#all') ? _todos = todos : ($active.matches('#active') ? 
+  $active.matches('#all') ? _todos = todos : ($active.matches('#active') ?
   _todos = todos.filter(todo=> !todo.completed) :
   _todos = todos.filter(todo => todo.completed))
-  
+
   // todos 렌더링
    $todos.innerHTML =
   _todos.map(todo => {
@@ -327,7 +327,7 @@ window.onload = () => {
   .then(_todos => {todos = _todos} )
   .then(render)
   .catch(err => console.error(err));
-  
+
 }
 // todo 입력 및 추가
 $inputTodo.onkeyup = e => {
@@ -384,8 +384,6 @@ $nav.onclick = e => {
 }
 
 ```
-
-
 
 ## server.js
 
@@ -480,4 +478,3 @@ app.listen('7000', () => {
   console.log('Server is listening on http://localhost:7000');
 });
 ```
-

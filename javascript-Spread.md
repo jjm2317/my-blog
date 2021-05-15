@@ -1,8 +1,10 @@
 ---
 title: javascript Spread
 date: 2020-10-22 16:13:32
-tags:
+category: "javascript"
+draft: false
 ---
+
 # 스프레드 문법
 
 ```
@@ -20,8 +22,6 @@ console.log(...{a: 1, b: 2});
 ```
 const list = ...[1, 2, 3]; //SyntaxError
 ```
-
-
 
 ## 1. 함수 호출문의 인수 목록에서 사용하는 경우
 
@@ -49,8 +49,6 @@ var max = Math.max.apply(null, arr); //3
 const max = Math.max(...arr)
 ```
 
-
-
 ```
 //Rest 파라미터
 
@@ -61,11 +59,7 @@ function foo(...rest) {
 foo(...[1, 2, 3]);
 ```
 
-
-
 ## 2. 배열 리터럴 내부에서 사용하는 경우
-
-
 
 ### concat
 
@@ -78,8 +72,6 @@ console.log(arr); //[1, 2, 3, 4]
 const arr= [...[1, 2], ...[3, 4]];
 console.log(arr); //[1, 2, 3, 4]
 ```
-
-
 
 ### splice
 
@@ -108,8 +100,6 @@ arr1.splice(1, 0, ...arr2);
 console.log(arr1); //[1, 2, 3, 4]
 ```
 
-
-
 ### 배열 복사
 
 ```
@@ -128,16 +118,12 @@ console.log(copy); [1, 2]
 console.log(copy === origin); //false
 ```
 
-
-
 ### 이터러블을 배열로 변환
-
-
 
 ```
 function sum() {
 	var args = Array.prototype.slice.call(arguments);
-	
+
 	return args.reduce(function (pre, cur){
 		return pre + cur;
 	}, 0);
@@ -172,8 +158,6 @@ const sum = (...args) => args.reduce((pre, cur) => pre + cur, 0);
 console.log(sum(1, 2, 3));
 ```
 
-
-
 ```
 const arrayLike = {
 	0: 1,
@@ -190,12 +174,10 @@ const arr = [...arrayLike]
 Array.from(arrayLike); // [1, 2, 3]
 ```
 
-
-
 ### 객체 리터럴 내부에서 사용하는 경우
 
 ```
-const obj = { x: 1, y: 2}; 
+const obj = { x: 1, y: 2};
 const copy = {...obj};
 console.log(copy); //{x: 1, y: 2}
 console.log(obj === copy); //false
@@ -227,4 +209,3 @@ const added = {...{x: 1, y: 2}, z: 0};
 
 console.log(added); //{x: 1, y: 2, z: 0}
 ```
-

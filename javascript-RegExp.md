@@ -1,7 +1,8 @@
 ---
 title: javascript RegExp
 date: 2020-12-14 13:24:46
-tags:
+category: "javascript"
+draft: false
 ---
 
 # javascript RegExp

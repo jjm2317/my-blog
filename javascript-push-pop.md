@@ -1,7 +1,8 @@
 ---
 title: javascript push&pop
 date: 2020-10-19 15:08:23
-tags:
+category: "javascript"
+draft: false
 ---
 
 # javascript push, pop
@@ -37,4 +38,3 @@ console.log(a);
 [ 1, 2, 3, 3 ]
 */
 ```
-

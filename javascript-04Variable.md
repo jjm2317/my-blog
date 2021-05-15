@@ -1,10 +1,8 @@
 ---
 title: javascript 04Variable
 date: 2020-08-24 17:28:52
-tags:
-  - javascript
-categories:
-  - javascript
+category: "javascript"
+draft: false
 ---
 
 # 변수

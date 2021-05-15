@@ -1,12 +1,11 @@
 ---
 title: javascript Distructuring
 date: 2020-10-22 16:45:14
-tags:
+category: "javascript"
+draft: false
 ---
 
 # 디스트럭처링 할당
-
-
 
 ## 1. 배열 디스트럭처링 할당
 
@@ -79,11 +78,11 @@ function parseURL(url = '') {
     groups: undefined
   ]
 	*/
-	
+
 	if(!parsedURL) return {};
-	
+
 	const [, protocol, host, path] = parsedURL;
-	
+
 	return { protocol, host, path};
 }
 
@@ -104,8 +103,6 @@ const [x, ...y] = [1, 2, 3];
 console.log(x, y); //1 [2, 3]
 ```
 
-
-
 ## 객체 디스트럭처링 할당
 
 ```
@@ -116,8 +113,6 @@ var lastName = user.lastName;
 
 console.log(firstName, lastName); //Ungmo Lee
 ```
-
-
 
 ```
 const user = { firstName: 'Ungmo', lastName: 'Lee'};
@@ -131,8 +126,6 @@ console.log(firstName, lastName); //Ungmo Lee
 const { lastName, firstName} = {firstName: 'Ungmo', lastName: 'Lee'};
 ```
 
-
-
 ```
 const { lastName, firstName}; //SyntaxError
 
@@ -142,7 +135,7 @@ const { lastName, firstName} = null;//TypeError
 ```
 const { lastName, firstName} = user;
 
-const { lastName: lastName, firstName: firstName} = user; 
+const { lastName: lastName, firstName: firstName} = user;
 ```
 
 ```
@@ -153,8 +146,6 @@ const { lastName: ln, firstName: fn} = user;
 console.log(fn, ln); // Ungmo Lee
 ```
 
-
-
 ```
 const { firstName = 'Ungmo', lastName} = {lastName: 'Lee'};
 console.log(firstName, lastName); //Ungmo Lee
@@ -162,8 +153,6 @@ console.log(firstName, lastName); //Ungmo Lee
 const {firstName: fn = 'Ungmo', lastName: ln} ={ lastName: 'Lee'};
 console.log(fn, ln); //Ungmo Lee
 ```
-
-
 
 ```
 const str = 'Hello';
@@ -176,8 +165,6 @@ const todo = { id: 1, content: 'HTML', compelted: true};
 const { id } = todo;
 console.log(id); // 1
 ```
-
-
 
 ```
 function printTodo() {
@@ -204,7 +191,7 @@ const todos = [
 ];
 
 const [, {id}] = todos;
-console.log(id); //2 
+console.log(id); //2
 ```
 
 ```
@@ -225,4 +212,3 @@ const { x, ...rest} = {x: 1, y: 2, z: 3};
 
 console.log(x, rest); //1 {y: 2, z: 3}
 ```
-
