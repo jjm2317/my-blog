@@ -1,7 +1,8 @@
 ---
 title: db MySQL Day2
 date: 2020-12-31 11:20:34
-tags:
+category: "database"
+draft: false
 ---
 
 # Mysql Day2

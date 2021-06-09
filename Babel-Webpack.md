@@ -1,7 +1,8 @@
 ---
 title: Babel&Webpack
 date: 2020-12-31 11:16:38
-tags:
+category: "javascript"
+draft: false
 ---
 
 # Babel & Webpack

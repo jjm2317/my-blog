@@ -1,7 +1,8 @@
 ---
 title: db MySQL prac
 date: 2020-12-31 11:22:39
-tags:
+category: "database"
+draft: false
 ---
 
 # MySQL 연습

@@ -1,8 +1,10 @@
 ---
 title: react Hooks
 date: 2020-11-14 13:42:17
-tags:
+category: "react"
+draft: false
 ---
+
 # 리액트 Hooks 발표자료
 
 **목차**
@@ -21,23 +23,18 @@ tags:
 
 - useRef
 
-  
-
-
-
 **Hooks란**
 
 - 리액트 패키지에서 제공하는 함수들
   - 각 함수를 hook이라고 하며 특정한 기능을 구현하는데 쓰임
 
-
-
 **함수형 컴포넌트의 사용**
 
 - Hooks가 도입되기 전에는 함수형 컴포넌트에서 state를 통한 상태관리를 할 수 없었다.
+
   - 클래스에서는 Component를 가져와 state를 사용하는 것이 가능했지만 함수형은 지원되는 기능이 없었다.
 
-- Hooks 도입후  useState, useEffect 등으로 상태관리 등의  다양한 작업이 가능해졌다. 
+- Hooks 도입후 useState, useEffect 등으로 상태관리 등의 다양한 작업이 가능해졌다.
 
 - 즉 클래스형 컴포넌트의 기능을 사용할 수 있는 함수형 컴포넌트를 Hooks를 통해구현 가능하다.
 
@@ -46,9 +43,7 @@ tags:
 - 함수의 재사용 가능
 - 클래스형 컴포넌트에 비해 가독성이 좋다
   - 클래스형 컴포넌트는 로직이 한 곳에 모여있음
-  - 함수형 컴포넌트는 로직을 분리시킨 후 조립하는 형태 
-
-
+  - 함수형 컴포넌트는 로직을 분리시킨 후 조립하는 형태
 
 ## 1. useState
 
@@ -67,7 +62,7 @@ import React, {useState} from 'react';
 
 const f = () => {
 	const[state, setState] = useState('init')
-    
+
     // ...
 }
 ```
@@ -85,7 +80,7 @@ const Counter = () => {
   //[상태 값, 상태를 설정하는 함수]
   //useState(상태의 기본값, 즉 value의 초기값)
   const [value, setValue] = useState(0)
-  
+
   //JSX 반환문
   //버튼을 클릭 시 value를 증가시키기
   //이벤트 핸들러 어트리뷰트 방식
@@ -99,8 +94,6 @@ const Counter = () => {
 
 export default Counter;
 ```
-
-
 
 **useState 여러번 사용**
 
@@ -128,10 +121,6 @@ const Counter = () => {
 export default Counter;
 ```
 
-
-
-
-
 ## 2. useEffect
 
 - 리액트 컴포넌트가 렌더링 될때마다 특정 작업을 수행하도록 설정할 수 있는 Hook
@@ -139,9 +128,7 @@ export default Counter;
 - useState가 상태를 초기화, 변화시켰다면 useEffect는 상태변화를 감지
   - 마운트(렌더링 직후)를 감지
   - 업데이트(상태의 변화) 를 감지
-- 첫 번째에는 콜백함수, 두번째로는 배열 전달 
-
-
+- 첫 번째에는 콜백함수, 두번째로는 배열 전달
 
 **사용법**
 
@@ -150,7 +137,7 @@ import React, {useState, useEffect} from 'react';
 
 const f = () =>{
 	const [value, setValue] = useState('init')
-	
+
 	useEffect(()=>{}, [value])
 }
 ```
@@ -162,7 +149,7 @@ import React, { useState } from "react";
 
 //함수형 컴포넌트 작성
 const Counter = () => {
-  //useState 
+  //useState
   const [value, setValue] = useState(0);
   const [value2, setValue2] = useState("체크안됨");
   //useEffect 호출 : 마운트, 업데이트 감지
@@ -182,8 +169,6 @@ const Counter = () => {
 export default Counter;
 ```
 
-
-
 **useEffect 마운트만 감지**
 
 ```react
@@ -191,10 +176,10 @@ import React, { useState } from "react";
 
 //함수형 컴포넌트 작성
 const Counter = () => {
-  //useState 
+  //useState
   const [value, setValue] = useState(0);
   const [value2, setValue2] = useState("체크안됨");
-  //useEffect 호출 : 마운트만 감지 
+  //useEffect 호출 : 마운트만 감지
   //두번째 인수로 빈배열 전달
     useEffect(()=>{
         console.log('렌더링 완료', value, value2);
@@ -214,7 +199,7 @@ import React, { useState } from "react";
 
 //함수형 컴포넌트 작성
 const Counter = () => {
-  //useState 
+  //useState
   const [value, setValue] = useState(0);
   const [value2, setValue2] = useState("체크안됨");
   //useEffect 호출 : 마운트, 특정 값 업데이트 감지
@@ -277,8 +262,6 @@ useEffect(()=>{
     },[]);
 ```
 
-
-
 **책 예제**: Info.js
 
 ```react
@@ -328,7 +311,7 @@ const Info = () => {
 export default Info;
 ```
 
-**책예제:  App.js**
+**책예제: App.js**
 
 ```react
 import React, { useState } from "react";
@@ -347,8 +330,6 @@ const App = () => {
 export default App;
 
 ```
-
-
 
 ## 3. useReducer
 
@@ -375,13 +356,13 @@ function reducer(state, action){
         case 'DECREMENT' :
             return{ value: state.value -1 };
         default:
-            return state;       
+            return state;
 	}
 }
 
 const Counter = () => {
     const [state, dispatch] = useReducer(reducer, {value: 0});
-    
+
     return(
     	<div>
         	<p>
@@ -398,10 +379,3 @@ const Counter = () => {
 }
 export default Counter;
 ```
-
-
-
-
-
-
-

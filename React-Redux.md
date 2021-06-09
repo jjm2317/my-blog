@@ -1,7 +1,8 @@
 ---
 title: React Redux
 date: 2020-12-10 07:55:51
-tags:
+category: "react"
+draft: false
 ---
 
 # Redux
@@ -19,11 +20,7 @@ tags:
 - 전역 상태를 관리할 때 효과적
 - 미들웨어를 통한 비동기 작업
 
-
-
 ## Conceptual overview
-
-
 
 ### 액션
 
@@ -32,7 +29,7 @@ tags:
 
 ```js
 {
-    type: 'TOGGLE_VALUE'
+  type: "TOGGLE_VALUE";
 }
 ```
 
@@ -60,10 +57,8 @@ tags:
 - 액션 객체를 만들어 주는 함수
 
 ```js
-addTodo = data => ({type: 'ADD_TODO', data})
+addTodo = (data) => ({ type: "ADD_TODO", data });
 ```
-
-
 
 #### 리듀서(reducer)
 
@@ -72,8 +67,6 @@ addTodo = data => ({type: 'ADD_TODO', data})
 1. 액션 발생
 2. 리듀서가 파라미터로 현재 상태, 액션객체를 받아옴
 3. 새로운 상태 반환
-
-
 
 ```js
 const initialState = {
@@ -91,8 +84,6 @@ const reducer = (state = initialState, action) {
 }
 ```
 
-
-
 #### 스토어(store)
 
 - 프로젝트에 리덕스를 적용하기위해 스토어를 만듬
@@ -100,9 +91,7 @@ const reducer = (state = initialState, action) {
 - 스토어 안에 들어있는 것들
   - 현재 애플리케이션 상태
   - 리듀서
-  - 몇가지 내장 함수 
-
-
+  - 몇가지 내장 함수
 
 #### 디스패치(dispatch)
 
@@ -110,28 +99,20 @@ const reducer = (state = initialState, action) {
 - 액션을 발생시킨다
 - 액션객체를 파라미터로 넣어서 호출
 
-
-
 #### 구독(subscribe)
 
 - 스토어의 내장 함수
-
-
 
 1. 리스너 함수를 파라미터로 넣어서 호출
 2. 액션이 디스패치
 3. 상태가 업데이트 될때마다 호출
 
-
-
 ```js
 const listener = () => {
-    console.log('상태가 업데이트됨')
-}
+  console.log("상태가 업데이트됨");
+};
 const unsubscribe = store.subscribe(listener);
 ```
-
-
 
 ### Redux without React
 
@@ -158,8 +139,6 @@ $ parcel index.html
 
 ```
 
-
-
 **index.html**
 
 ```html
@@ -178,8 +157,6 @@ $ parcel index.html
 </html>
 ```
 
-
-
 **index.css**
 
 ```css
@@ -191,24 +168,19 @@ $ parcel index.html
   box-sizing: border-box;
 }
 
-
 .toggle.active {
   background: yellow;
 }
 ```
 
-
-
 **index.js**
 
 ```js
-const divToggle = document.querySelector('.toggle');
-const counter = document.querySelector('h1');
-const btnIncrease = document.querySelector('#increase');
-const btnDecrease = document.querySelector('#decrease');
+const divToggle = document.querySelector(".toggle");
+const counter = document.querySelector("h1");
+const btnIncrease = document.querySelector("#increase");
+const btnDecrease = document.querySelector("#decrease");
 ```
-
-
 
 #### 액션 타입과 액션 생성 함수 정의
 
@@ -219,12 +191,10 @@ const btnDecrease = document.querySelector('#decrease');
   - 액션 이름은 고유해야함
 
 ```js
-const TOGGLE_SWITCH= 'TOGGLE_SWITCH';
-const INCREASE = 'INCREASE';
-const DECREASE = 'DECREASE';
+const TOGGLE_SWITCH = "TOGGLE_SWITCH";
+const INCREASE = "INCREASE";
+const DECREASE = "DECREASE";
 ```
-
-
 
 **액션 생성 함수**
 
@@ -232,17 +202,15 @@ const DECREASE = 'DECREASE';
 - 액션 객체는 type이 있어야함
 
 ```js
-const toggleSwitch = () => ({ type: TOGGLE_SWITCH});
-const increase = difference => ({type: INCREASE, difference});
-const decrease = () => ({ type: DECREASE});
+const toggleSwitch = () => ({ type: TOGGLE_SWITCH });
+const increase = (difference) => ({ type: INCREASE, difference });
+const decrease = () => ({ type: DECREASE });
 ```
 
-
-
-####  초깃값 설정
+#### 초깃값 설정
 
 - 초깃값의 형태는 자유
-  - 원시값 
+  - 원시값
   - 객체
 
 ```js
@@ -283,12 +251,10 @@ const reducer = (state = initialState, action) {
 }
 ```
 
-
-
 #### 스토어 만들기
 
 ```js
-import { createStore } from 'redux';
+import { createStore } from "redux";
 
 //...
 const store = createStore(reducer);
@@ -302,19 +268,19 @@ const store = createStore(reducer);
 
 //...
 const render = () => {
-    const state = store.getState();
-    
-    state.toggle ? divToggle.classList.add('active') : divToggle.classList.remove('active');
-    
-    counter.innerText = state.counter;
+  const state = store.getState();
+
+  state.toggle
+    ? divToggle.classList.add("active")
+    : divToggle.classList.remove("active");
+
+  counter.innerText = state.counter;
 };
 
 render();
 ```
 
-
-
-#### 구독하기 
+#### 구독하기
 
 ```js
 //스토어의 상태가 바뀔때마다 render 함수 호출
@@ -324,30 +290,28 @@ render();
 //해당 함수 객체가 상태 업데이트 시 호출
 
 const listener = () => {
-    console.log('상태가 업데이트 됨');
-}
+  console.log("상태가 업데이트 됨");
+};
 
-const unsubscribe = store.subscribe(listener)
+const unsubscribe = store.subscribe(listener);
 ```
 
-
-
-``` js
+```js
 //...
 const render = () => {
-    const state = store.getState();
-    
-    state.toggle? divToggle.classList.add('active') : divToggle.classList.remove('active');
-    
-    counter.innerText = state.counter;
-}
+  const state = store.getState();
+
+  state.toggle
+    ? divToggle.classList.add("active")
+    : divToggle.classList.remove("active");
+
+  counter.innerText = state.counter;
+};
 
 render();
 
 store.subscribe(render);
 ```
-
-
 
 #### 액션 발생시키기
 
@@ -357,15 +321,14 @@ store.subscribe(render);
 //스토어 내장함수 dispatch 사용
 //파라미터로 액션객체
 divToggle.onclick = () => {
-    store.dispatch(toggleSwitch());
+  store.dispatch(toggleSwitch());
 };
 
 btnIncrease.onclick = () => {
-    store.dispatch(increase(1));
+  store.dispatch(increase(1));
 };
 
 btnDecrease.onclick = () => {
-    store.dispatch(decrease());
-}
+  store.dispatch(decrease());
+};
 ```
-

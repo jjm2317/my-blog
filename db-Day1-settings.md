@@ -1,8 +1,10 @@
 ---
 title: db Day1 settings
 date: 2020-11-23 18:07:25
-tags:
+category: "database"
+draft: false
 ---
+
 # 데이터베이스 Day1
 
 - ubuntu 기초 사용
@@ -10,13 +12,9 @@ tags:
 - 모델링
 - SELECT FROM WHERE
 
-
-
 **데이터베이스**
 
 db / 데이터를 통합하여 관리하는 데이터의 집합
-
-
 
 DBMS
 
@@ -25,24 +23,16 @@ DBMS
 - mongoDB
 - mysql
 
-
-
 - RDBMS
 
   - Oracle, Mysql, Postgresql, Sqlite
   - 데이터의 테이블 사이에 키값으로 관계를 가지고 이쓴 데이터 베이스
-
-  
 
 - NoSQL
 
   - Mongodb, Hbase, Cassandra
   - 데이터 테이블 사이의 관계가 없이 데이터를 저장하는 데이터 베이스
   - 데이터 사이의 관계가 없으므로 복잡성이 작고 많은 데이터의 저장이 가능
-
-
-
-
 
 **MySQL**
 
@@ -56,53 +46,33 @@ DBMS
 
 - dbms 마다 SQL 문법이 조금씩 다른데 MySQL은 표준 SQL을 따른다.
 
-
-
 - License
-  - 
-
-
+  -
 
 server > database > table > row > value
 
-
-
 테이블과 테이블사이의 관계를 가짐
 
+여러개의 데이터베이스안에 여러개의 테이블을 만들고 여러개의 row 데이터를 넣을 수 있다.
 
-
-여러개의 데이터베이스안에 여러개의 테이블을 만들고 여러개의 row 데이터를 넣을 수 있다. 
-
-RDBMS 쪽에서는 행에 대해서  row tuple record ,  열에대해서 column field attribute 로 명명해서 부름
-
-
-
-
-
-
+RDBMS 쪽에서는 행에 대해서 row tuple record , 열에대해서 column field attribute 로 명명해서 부름
 
 **aws**
 
-서버 컴퓨터가 여러개가 있다. 
+서버 컴퓨터가 여러개가 있다.
 
-클라우드 기술은 여러개의 컴퓨터를 물리적으로 묶어서 여러개의 계정을 단독컴퓨터로 다룰수있다. 
+클라우드 기술은 여러개의 컴퓨터를 물리적으로 묶어서 여러개의 계정을 단독컴퓨터로 다룰수있다.
 
 클라우드 서비스가 이슈가 되는이유
 
 - 인간의 노동력을 대체
   - 서버 구축을 위해서 400~700정도의 서버컴퓨터를 구입
-  - ssd 를구매해서 끼운다. 
+  - ssd 를구매해서 끼운다.
   - os설치
   - 회사에 대한 데이터베이스 어플리케이션 설치
-  - 테스트 후 들고 lg idc 
+  - 테스트 후 들고 lg idc
   - 빨라야 일주일
-  - 클라우드 사용시 5분만에 할 수 있다. 
-
-
-
-
-
-
+  - 클라우드 사용시 5분만에 할 수 있다.
 
 **프로그래밍 및 웹구조**
 
@@ -110,11 +80,7 @@ os
 
 - cpu ram harddisk를 컨트롤
 
-
-
 pc - internet - server
-
-
 
 브라우저를열고 url 입력
 
@@ -124,25 +90,21 @@ dns라는 서버
 - url형태로 서버를 찾아감
 - 서버를 찾아주는것이 라우터임
 
-서버에서 받는다. 
+서버에서 받는다.
 
-서버에는 웹 어플리케이션이 있다. 
+서버에는 웹 어플리케이션이 있다.
 
-url에는 아티클 아이디가 있어서 요청을 보낸다. 
+url에는 아티클 아이디가 있어서 요청을 보낸다.
 
-서버에서는 db로 연결되어 있어 아이디에 맞는 데이터를 가져온다. 
+서버에서는 db로 연결되어 있어 아이디에 맞는 데이터를 가져온다.
 
-html코드에db에서 가져온 데이터를 입력해서 응답한다. 
+html코드에db에서 가져온 데이터를 입력해서 응답한다.
 
 node js 에서 자바스크립트언어를 사용하여 프론트엔드도 백엔드영역
 
-
-
-
-
 cookie sessoion cache
 
-cookie 
+cookie
 
 - 문자열 데이터를 도메인 별로 따로 저장
 - 로그인 정보, 내가 봤던 상품 정보, 팝업 다시보지 않음
@@ -152,37 +114,27 @@ session
 
 - server에 저장하는 객체 데이터, 브라우저와 연결시 session id 생성
 
-
-
 cache
 
 - ram에 있는데이터가 연산속도가 빠르다.
 - ram이꽉차면 가상메모리 사용
 
-
-
-
-
-private public 
+private public
 
 - 회사내에서는 외부로 접속이 안되지만 사내에서 쓸수있는 intranet이 있다.
-- 공유기는 인터넷망과 연결되어있다. 
-- 공유기로 네이버에 들어가면 같은 아이피를 공유한다. 
-- 내부에서 공유자를 구분해주는 ip 값이 필요하다. 
-- private ip로 구분해준다. 
-- 하나의 서버에도 public ip와 private ip를 갖는ㄴ다. 
-- 인트라넷에서 특정사이트 접속을 막으면 공유기에서 설정을 한다. 
-- 사내 웹페이지만 접속하게 할 수도있다. 
+- 공유기는 인터넷망과 연결되어있다.
+- 공유기로 네이버에 들어가면 같은 아이피를 공유한다.
+- 내부에서 공유자를 구분해주는 ip 값이 필요하다.
+- private ip로 구분해준다.
+- 하나의 서버에도 public ip와 private ip를 갖는ㄴ다.
+- 인트라넷에서 특정사이트 접속을 막으면 공유기에서 설정을 한다.
+- 사내 웹페이지만 접속하게 할 수도있다.
 - 인터넷 망에서 사용하는것이 public ip
 - 인트라넷에서 사용하는 것이 private ip 이다
-
-
 
 ## Mysql 설치 및 설정
 
 - AWS EC2(elastic compute cloud) 인스턴스에 ubuntu os 및 MySQL 5.7.x버전 설치
-
-
 
 **EC2 인스턴스 생성**
 
@@ -196,16 +148,12 @@ private public
 
 - ssh -i ~/.ssh/pdf.pem ubuntu@{접속 ip}
 
-
-
 **apt-get 업데이트**
 
 ```
 $ sudo apt-get update -y
 $ sudo apt-get ubgrade -y
 ```
-
-
 
 **MySQL Server 설치**
 
@@ -222,8 +170,6 @@ $ sudo mysql_secure_installation
 // remove anonymous users / disallow root login remotely
 // remove test database and access to it / reload privilege tables now
 ```
-
-
 
 **MySQL 패스워드 설정**
 
@@ -250,8 +196,6 @@ ALTER USER user_name
 [ ACCOUNT { LOCK | UNLOCK}]
 ```
 
-
-
 **mysql 로그인**
 
 ```
@@ -271,15 +215,11 @@ ALTER user 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '
 변경할 비밀번호';
 ```
 
-
-
 **변경사항 저장**
 
 ```
 mysql> flush pivileges;
 ```
-
-
 
 **설정한 패스워드를 입력하여 접속**
 
@@ -287,8 +227,6 @@ mysql> flush pivileges;
 $ mysql -u root -p
 Enter password: `비밀번호`
 ```
-
-
 
 **외부접속 설정**
 
@@ -299,11 +237,9 @@ $ sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
 //bind-adress 변경
 //127.0.0.1 > 0.0.0.0
 
-//127 ~~ : 자체 컴퓨터를 나타내는 ip 주소 
-//0.0.0.0 : 로컬시스템의 모든 IPv4 주소 / 
+//127 ~~ : 자체 컴퓨터를 나타내는 ip 주소
+//0.0.0.0 : 로컬시스템의 모든 IPv4 주소 /
 ```
-
-
 
 **외부 접속 패스워드 설정**
 
@@ -311,15 +247,11 @@ $ sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
 mysql> grant all privileges on *.* to root@'%' identified by '비번'
 ```
 
-
-
 **서버 재시작으로 설정내용 적용**
 
 ```
 $ sudo systemctl restart mysql.service
 ```
-
-
 
 **샘플 데이터 추가**
 
@@ -336,23 +268,13 @@ $mysql -u root -p {데이터베이스} > {sql파일}
 
 ```
 
-
-
-
-
-
-
 ## Mysql Workbench 사용
-
-
 
 **데이터 베이스 모델링**
 
 - 데이터 베이스 모델링은 데이터 베이스에서의 테이블 구조를 미리 계획해서 작성하는 작업
 - RDBMS 는 테이블간에 유기적으로 연결되어 있기 때문에 모델링을 잘하는것이 중요
 - 기본적으로 개념적 모델링, 논리적 모델링, 물리적 모델링 절차로 설계
-
-
 
 **개념적 모델링**
 
@@ -367,8 +289,6 @@ $mysql -u root -p {데이터베이스} > {sql파일}
 **물리적 모델링**
 
 - 논리적 모델링을 DBMS 에 추가하기위해 구체화 하는 과정
-
-
 
 **실습**
 
@@ -389,8 +309,6 @@ $mysql -u root -p {데이터베이스} > {sql파일}
 - 데이터 베이스를 EER 다이어그램으로 변경
   - database -reverse engineer
 
-
-
 **관계선**
 
 실선 : 식별관계 : 부모가 있어야 자식이 생성됨
@@ -399,13 +317,7 @@ $mysql -u root -p {데이터베이스} > {sql파일}
 
 ![image-20201124112832430](C:\Users\Jung\AppData\Roaming\Typora\typora-user-images\image-20201124112832430.png)
 
-
-
-
-
 ## SQL 문
-
-
 
 **DML**
 
@@ -440,8 +352,6 @@ $mysql -u root -p {데이터베이스} > {sql파일}
 
 실행즉시 DB에 적용
 
-
-
 **DCL**
 
 - data control language
@@ -453,8 +363,6 @@ $mysql -u root -p {데이터베이스} > {sql파일}
 - GRUNT
 - REVORKE
 - DENY
-
-
 
 ### SELECT FROM
 
@@ -469,15 +377,11 @@ SELECT <column_name_1>, <column_name_2> . ...
 FROM <table_name>
 ```
 
-
-
 **전체 컬럼 데이터 조회**
 
 ```
 sql> SELECT * FROM wold.country
 ```
-
-
 
 **code, name 세개의 컬럼 데이터 조회**
 
@@ -486,18 +390,14 @@ sql> SELECT code, name
 FROM world.country
 ```
 
-
-
 **데이터 베이스 선택: FROM 절에 world.을 사용할 필요가 없다.**
 
 ```
 sql> USE world;
 
-sql> SELECT * 
+sql> SELECT *
 FROM country
 ```
-
-
 
 **alias: 컬럼의 이름을 변경할 수 있다**
 
@@ -514,13 +414,9 @@ sql> SHOW TABLES;
 sql> DESC city;
 ```
 
-
-
 ### WHERE
 
 - 특정 조건을 주어 데이터를 검색하는데 사용되는 문법
-
-
 
 **비교연산**
 
@@ -531,8 +427,6 @@ FROM country
 WHRER Poplutaion >= 1000000000
 ```
 
-
-
 **논리 연산 : AND, OR**
 
 ```
@@ -541,8 +435,6 @@ SELECT *
 FROM country
 WHERE Population >= 700000000 AND Popluation <= 1000000000
 ```
-
-
 
 **- 범위 연산: BETWEEN**
 
@@ -561,8 +453,6 @@ SELECT *
 FROM country
 WHERE Continent = "Asia" OR Continent = "Africa"
 ```
-
-
 
 **특정 조건을 포함 : IN, NOT IN**
 
@@ -586,8 +476,6 @@ WHERE Continent != "Asia" AND Continent != "Africa"
 
 ```
 
-
-
 **특정 문자열이 포함된 데이터 출력 : LIKE**
 
 ```
@@ -597,15 +485,9 @@ FROM country
 WHERE GovernmentForm LIKE "%Republic%"
 ```
 
-
-
-
-
 ### ORDER BY
 
 - 특정 컬럼의 값으로 데이터 정렬에 사용되는 문법
-
-
 
 **오름차순 인구순으로 국가의 리스트를 출력**
 
@@ -615,8 +497,6 @@ FROM country
 ORDER BY popluation ASC
 ```
 
-
-
 **내림차순 인구순으로 국가의 리스트를 출력**
 
 ```
@@ -624,8 +504,6 @@ SELECT *
 FROM country
 ORDER BY population DESC
 ```
-
-
 
 **국가 코드를 알파벳순으로 정렬, 같은 국가코드를 가지면 인구순으로 내림차순 정렬**
 
@@ -635,9 +513,7 @@ FROM city
 ORDER BY CountryCode ASC, Population DESC
 ```
 
-
-
 ### LIMIT
 
 - LIMIT 은 조회하는 데이터의 수를 제한할 수 있다.
-- 
+-

@@ -1,7 +1,8 @@
 ---
 title: db MySQL review
 date: 2020-12-31 11:19:26
-tags:
+category: "database"
+draft: false
 ---
 
 # MySQL
