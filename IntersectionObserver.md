@@ -132,5 +132,12 @@ const observer = new IntersectionObserver(() => {
 
 생성자함수의 두번째 인자로 전달되는 options 객체를 알아보자.
 
+options 객체의 프로퍼티
 
+- root
+  - 대상 요소의 가시성을 체크할 뷰포트 역할을 하는 요소이다. 
+- rootMargin
+  - root 요소의 뷰포트 계산시 면적을 확장하거나 축소할 수 있는 값이다. 
+- threshold
+  - 
 
