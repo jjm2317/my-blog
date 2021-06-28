@@ -136,6 +136,7 @@ options 객체의 프로퍼티
 
 - root
   - 대상 요소의 가시성을 체크할 뷰포트 역할을 하는 요소이다. 
+  - null이 아닌 값이라면, 대상요소는 반드시 root 요소의 자손 요소이어야 한다. 
 - rootMargin
   - root 요소의 뷰포트 계산시 면적을 확장하거나 축소할 수 있는 값이다. 
   - 값은 CSS 의 margin property 와 유사하다. "top right bottom left" 순으로 값을 할당할 수 있다. 
@@ -199,9 +200,72 @@ IntersectionObserver 인스턴스 생성시 첫번째 인수로 정의하는 콜
 - isIntersecting
   - root 요소와 대상요소의 임계치 이상의 교차여부. boolean 값
 - rootBounds
-  - roo
+  - 뷰포트 기준 root요소의 위치 정보, rootMargin 반영
 - target
+  - observe 된 대상요소
 - time
+  - 대상요소가 observe된 시점으로부터 경과 시간 (ms)
 
 
 
+
+
+### Intersection이 계산되는 방식
+
+Intersection Observer APi는 모든 공간을 사각형으로 계산한다. 
+
+실제로 사각형이 아닌 요소들도, 해당 도형을 포함하는 가장 작은 사각형으로 계산한다. 
+
+유사하게, 탐지 또는 보여지는 부분이 사각형이 아니더라도, 요소의 보여지는 부분을 포함하는 가장 작은 사각형으로 계산된다. 
+
+
+
+#### intersection의 root요소와 rootMargin
+
+대상요소의 교차를 탐지하기 이전에, root 요소에 해당하는 컨테이너를 알아야한다. 
+
+Intersection Observer 생성시 root 프로퍼티에 바인딩한 DOM 요소일 수도 있고, null 로 바인딩한 경우 document의 뷰포트가 된다. 
+
+ 
+
+**root 요소의 intersection 사각형**은 대상요소를 체크하기 위해 사용되며, 결정되는 방법은 다음과 같다. 
+
+- options의 root 프로퍼티가 null 인경우, document 뷰포트로 결정된다.
+-  root 요소가 overflow 속성을 가지고 있을경우, 콘텐츠 영역만 사각형으로 결정된다. 
+- boundClientRect객체의 값과 동일하다 .
+
+
+
+root요소의 intersection 사각형은 root margin 값에 의해 조절될 수 있다. 
+
+root 요소의 사각형 경계는 rootMargin 값에 의해 넓어지거나 줄어들 수 있다. 
+
+
+
+
+
+#### Thresholds
+
+**Intersection Observer API는 임계값을 기준으로 탐지한다. **
+
+Intersection Observer API 는 교차범위가 얼마나 되는지를 탐지하는 것이 아니고, 임계 값인 thresholds 를 사용한다. 
+
+observer 인스턴스를 생성할 때, 콜백함수를 실행할 기준이 되는 임계치를 하나 이상의 숫자값으로 전달할 수 있다.
+
+API는 해당 임계치를 넘나들때마다 콜백함수를 실행한다. 
+
+
+
+콜백함수가 실행 될때 IntersectionObserverEntry 객체를 매개변수로 받아올 수 있다. 
+
+대상요소가 교차됨을 확인하기 위해서 entry 객체의 isIntersecting 프로퍼티 값을 이용할 수 있다. 
+
+true인 경우, 대상요소는 적어도 부분적으로 root 요소를 교차하였다. 
+
+
+
+0이 아닌 intersection 사각형을 갖는 것도 가능하며, 교차가 실제로 경계면을 따라 발생하거나, boundingClientRect가 0인경우 일어날 수 있다. 
+
+대상 요소와 root 요소가 경계선을 공유하는 상태는 교차 상태에 이르렀다고 고려되지 않는다. 
+
+ 
