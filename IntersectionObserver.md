@@ -192,10 +192,14 @@ IntersectionObserver 인스턴스 생성시 첫번째 인수로 정의하는 콜
 탐지된 대상요소의 교차 정보를 나타내는 객체이며 다음과 같은 값들을 프로퍼티로 갖는다. 
 
 - boundingClientRect
+  - root 요소를 기준으로 한 대상요소의 위치 정보
 - intersectionRatio
+  - root요소와 대상요소의 교차비율. 0 ~ 1 값
 - intersectionRect
 - isIntersecting
+  - root 요소와 대상요소의 임계치 이상의 교차여부. boolean 값
 - rootBounds
+  - roo
 - target
 - time
 
