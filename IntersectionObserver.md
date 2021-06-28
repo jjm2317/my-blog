@@ -138,6 +138,66 @@ options 객체의 프로퍼티
   - 대상 요소의 가시성을 체크할 뷰포트 역할을 하는 요소이다. 
 - rootMargin
   - root 요소의 뷰포트 계산시 면적을 확장하거나 축소할 수 있는 값이다. 
+  - 값은 CSS 의 margin property 와 유사하다. "top right bottom left" 순으로 값을 할당할 수 있다. 
+  - 기본값은 0이다. 
 - threshold
-  - 
+  - 콜백함수가 동작하는 대상요소의 교차 비율을 가리킨다. 
+  - number 값이나, array of numbers 값이 들어간다. 
+    - 단일 number 값으로 0.5 를 할당하면 root 요소와 대상요소의 교차범위 50% 기준으로 콜백함수가 호출된다. 
+    - 배열 값으로 [0, 0.25, 0.5, 0.75, 1] 를 할당하면, 교차범위가 0, 25%, 50%, 75%, 100% 기준으로 콜백함수가 호출된다. 
+  - 기본값은 0이다. 
+
+
+
+#### 탐지될 대상요소 등록하기
+
+IntersectionObserver 인스턴스를 생성완료했다면 탐지해야될 대상요소를 등록할 수 있다. 
+
+IntersectionObserver.prototype.observe 메서드를 사용한다.
+
+```js
+const target = document.querySelector("#target");
+observer.observe(target);
+```
+
+ 
+
+#### 콜백함수의 파라미터
+
+```js
+const observer = new IntersectionObserver((entires, observer) => {
+    // Each entry describes an intersection change for one observed
+    // target element:
+    //   entry.boundingClientRect
+    //   entry.intersectionRatio
+    //   entry.intersectionRect
+    //   entry.isIntersecting
+    //   entry.rootBounds
+    //   entry.target
+    //   entry.time
+}, {
+    /* options for running callback*/
+})
+```
+
+IntersectionObserver 인스턴스 생성시 첫번째 인수로 정의하는 콜백함수는, 다음과 같은 파라미터를 갖는다. 
+
+1. IntersectionObserverEntry의 배열
+2. observer 인스턴스 
+
+
+
+**IntersectionObserverEntry**
+
+탐지된 대상요소의 교차 정보를 나타내는 객체이며 다음과 같은 값들을 프로퍼티로 갖는다. 
+
+- boundingClientRect
+- intersectionRatio
+- intersectionRect
+- isIntersecting
+- rootBounds
+- target
+- time
+
+
 
