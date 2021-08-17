@@ -262,10 +262,30 @@ API는 해당 임계치를 넘나들때마다 콜백함수를 실행한다.
 
 true인 경우, 대상요소는 적어도 부분적으로 root 요소를 교차하였다. 
 
-
-
 0이 아닌 intersection 사각형을 갖는 것도 가능하며, 교차가 실제로 경계면을 따라 발생하거나, boundingClientRect가 0인경우 일어날 수 있다. 
 
 대상 요소와 root 요소가 경계선을 공유하는 상태는 교차 상태에 이르렀다고 고려되지 않는다. 
 
  
+
+#### clipping 과 Intersection 사각형
+
+intersection이 발생하는 과정
+
+1. 대상 요소의 boundingRect(경계 사각형) 정보가 대상요소에서 getBoundingClientRect메서드를 호출함으로서 얻어진다. 
+2. 대상의 부모 요소에서 시작하여 바깥으로 이동하면서, intersection 사각형을 잘라내는 것이 적용된다. 사각형 자르기는 두 블록의 교차지점과 overflow 프로퍼티에 의한 자르기 모드에 의해 결정된다. overflow: visible 값을 제외하고는 자르기가 수행된다. 
+3. root 요소가 iframe과 같은 nested browsing context 을 포함하는 경우, intersection 사각형이 context의 뷰포트에 맞추어 잘라지고, root 요소가 가지고 있는 블록에 따라 재귀적으로 수행된다. 상위 레벨인 iframe에 도달했을 때, intersection 사각형은 해당 뷰포트에 맞게 잘라지고, iframe의 부모 요소가 이어서 작업된다. 
+4. 재귀적 자르기가 root 요소까지 도달했을때, 잘려진 사각형(resulting rectangle)은 intersection root 의 대등한 공간으로 매핑된다.
+5. resulting rectangle은 root의 intersection 사각형과의 교차에따라 업데이트 된다. 
+6. 이 resulting rectangle이 결국 대상 요소의 dom 과 매핑된다. 
+
+
+
+#### intersection change와 콜백함수
+
+대상요소의 교차 범위가 threshold의 값중 하나를 넘나들었을때, Intersection Observer 객체의 콜백함수가 실행된다. 
+
+콜백함수는 IntersectionIbserverEntry 객체의 배열과 observer 객체의 참조를 매개변수로 받는다. 
+
+각각의 entry는 하나의 threshold를 넘나들었다는 것을 말하는 IntersectionObserverEntry 객체이다. 즉 어느정도로 교차되었는지를 알 수 있다. 
+
